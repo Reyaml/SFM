@@ -1,0 +1,33 @@
+Name "Squeezer(Dynamics)"
+
+--Integrated Dynamics 电动挤压机自动化
+
+--命名规则:
+--Squeezer: 电动挤压机
+--Energy_Src: 终极能量立方
+--ItemIn: 物品输入容器
+--ItemOut: 物品输出容器
+--FluidOut: 流体输出容器
+--其中ItemIn与ItemOut可以合并，使用ME接口或者机械动力的工作盆等皆可
+
+--原料输入
+Every 20 ticks do
+
+    Input From ItemIn Top Side
+        Output retain 2 to Each Squeezer Top Side
+    forget
+
+End
+
+--物品与流体产物输出
+Every 20 ticks do
+
+    Input From Each Squeezer Bottom Side Slots 0-3
+        Output To ItemOut Bottom Side
+    forget
+
+    Input fluid:integrateddynamics:menril_resin From Each Squeezer Bottom Side Slots 0
+        Output fluid:integrateddynamics:menril_resin To FluidOut Bottom Side
+    forget
+
+End
