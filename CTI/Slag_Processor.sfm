@@ -1,0 +1,45 @@
+Name "Slag Processor"
+
+Every 20 ticks do
+
+    Input kubejs:*_slag From Slag_Src Top Side Slots 0-3
+        Output retain 16 Each kubejs:*_slag To Each Processor
+    forget 
+
+End
+
+Every 20 ticks do
+
+    Input From Each Processor Slots 1-4
+        Output To Collector Top Side Slots 9-12
+    forget
+
+End
+
+Every 20 ticks do
+
+    Input kubejs:*_slag From Slag_Src Top Side Slots 4-6
+        Output retain 16 Each kubejs:*_slag To Each Pulverizer
+    forget
+ 
+End
+
+Every 20 ticks do
+
+    Input From Each Pulverizer Slots 1-4
+        Output To Collector Top Side Slots 9-12
+    forget
+
+End
+
+Every 20 ticks do
+
+    Input fluid:kubejs:used_lava From Slag_Src Top Side Slots 7-8
+        Output fluid:kubejs:used_lava To Each Refinery
+    forget
+
+    Input Except fluid:kubejs:used_lava From Each Refinery
+        Output To Collector Top Side Slots 13-15
+    forget
+
+End

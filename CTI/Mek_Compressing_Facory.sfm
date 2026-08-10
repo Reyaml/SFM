@@ -1,0 +1,34 @@
+Name "Mek_Compressing_Factory"
+
+Every 20 ticks do
+
+    Input avaritia:neutron_ingot From ME_Face Top Side Slots 0
+        Output retain 8 avaritia:neutron_ingot To Each Neutron Bottom Side
+    forget
+
+    Input mekanism:ingot_osmium From ME_Face Top Side Slots 1
+        Output retain 8 mekanism:ingot_osmium To Each Osmium Bottom Side
+    forget
+
+    Input From Each Compressing_Factory Top Side
+        Output To ME_Face Top Side Slots 9-12
+    forget 
+
+End
+
+Every 20 ticks do
+
+    Input etshtinker:gs_indused_netherite_dust From Ingredient Top Side
+        Output etshtinker:gs_indused_netherite_dust To Neutron Top Side
+    forget
+
+    Input kubejs:compressed_hardlead From Ingredient Top Side
+        Output kubejs:compressed_hardlead To Neutron Top Side
+    forget
+
+    Input mekanism:dust_refined_obsidian From Ingredient Top Side
+        Output mekanism:dust_refined_obsidian To Osmium Top Side
+    forget
+
+
+End

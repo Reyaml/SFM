@@ -1,0 +1,58 @@
+Name "Fissile_Fuel"
+
+Every 20 ticks do
+
+    Input mekanism:yellow_cake_uranium From ME_Face Top Side Slots 0
+        Output retain 64 mekanism:yellow_cake_uranium To Each Oxidizer Bottom Side
+    forget
+
+    Input gas:mekanism:uranium_oxide From Each Oxidizer Top Side
+        Output gas:mekanism:uranium_oxide To ME_Face Top Side Slots 9-12
+    forget
+
+End
+
+Every 20 ticks do
+
+    Input gas:mekanism:sulfuric_acid From ME_Face Top Side Slots 2
+        Output gas:mekanism:sulfuric_acid To Each Dissolution Bottom Side
+    forget
+
+    Input mekanism:fluorite_gem From ME_Face Top Side Slots 1
+        Output retain 64 mekanism:fluorite_gem To Each Dissolution Bottom Side
+    forget
+
+    Input gas:mekanism:hydrofluoric_acid From Each Dissolution Top Side 
+        Output gas:mekanism:hydrofluoric_acid To ME_Face Top Side Slots 9-12
+    forget
+
+End
+
+Every 20 ticks do
+
+    Input gas:mekanism:hydrofluoric_acid From ME_Face Top Side Slots 3
+        Output gas:mekanism:hydrofluoric_acid To Each Infuser Bottom Side Slots 0
+    forget
+
+    Input gas:mekanism:uranium_oxide From ME_Face Top Side Slots 4
+        Output gas:mekanism:uranium_oxide To Each Infuser Top Side Slots 0
+    forget
+
+    Input gas:mekanism:uranium_hexafluoride From Each Infuser West Side Slots 0
+        Output gas:mekanism:uranium_hexafluoride To ME_Face Top Side Slots 9-12
+    forget
+
+End
+
+Every 20 ticks do
+
+    Input gas:mekanism:uranium_hexafluoride From ME_Face Top Side Slots 5
+        Output gas:mekanism:uranium_hexafluoride To Each Isotopic Bottom Side Slots 0
+    forget
+
+    Input gas:mekanism:fissile_fuel From Each Isotopic West Side Slots 0
+        Output gas:mekanism:fissile_fuel To ME_Face Top Side Slots 9-12
+    forget
+
+End
+

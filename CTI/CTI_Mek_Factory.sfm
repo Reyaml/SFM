@@ -1,0 +1,25 @@
+Name "CTI_Mek_Factory"
+--灌注工厂灌注化学品注入
+Every 20 ticks do
+
+    Input mekanism:enriched_carbon From ME_Face Top Side Slots 0
+        Output retain 64 mekanism:enriched_carbon To Each Carbon Bottom Side
+    forget
+
+    Input mekanism:enriched_redstone From ME_Face Top Side Slots 1
+        Output retain 64 mekanism:enriched_redstone To Each Redstone Bottom Side
+    forget
+
+    Input mekanism:enriched_diamond From ME_Face Top Side Slots 2
+        Output retain 64 mekanism:enriched_diamond To Each Diamond Bottom Side
+    forget
+
+    Input mekanism:enriched_refined_obsidian From ME_Face Top Side Slots 3
+        Output retain 64 mekanism:enriched_refined_obsidian To Each Obsidian Bottom Side
+    forget
+
+    Input kubejs:enriched_refined_glowstone From ME_Face Top Side Slots 4
+        Output retain 64 kubejs:enriched_refined_glowstone To Each Glowstone Bottom Side
+    forget
+
+End
