@@ -1,0 +1,93 @@
+Name "Multiple_Ore"
+
+--通用机械Mekanism最高倍矿自动化完全体
+
+--能量输送
+Every 1 tick do
+
+   Input FE:: From Energy_Src Bottom Side
+      Output FE:: To Cobble2Gravel Bottom Side
+      Output FE:: To Gravel2Flint Bottom Side
+      Output FE:: To Flint2Gunpowder Bottom Side
+      Output FE:: To Gunpowder2Sulfur Bottom Side
+      Output FE:: To Sulfur2SO2 Bottom Side
+      Output FE:: To SO22SO3 Bottom Side
+      Output FE:: To SO32H2SO4 Bottom Side
+      Output FE:: To H2O2H2Og Bottom Side
+      Output FE:: To Dissolution_Chamber Bottom Side
+      Output FE:: To Washer Bottom Side
+      Output FE:: To Crystallizer Bottom Side
+      Output FE:: To Injection_Chamber Bottom Side
+      Output FE:: To Purifying Bottom Side
+      Output FE:: To Crush2Dirty Bottom Side
+      Output FE:: To Enricher Bottom Side
+
+End
+
+--物品与流体输送
+Every 20 ticks do 
+
+   Input minecraft:cobblestone From Cobble_Stone Bottom Side
+      Output retain 64 minecraft:cobblestone To Cobble2Gravel Bottom Side
+   forget
+
+   Input minecraft:gravel From Cobble2Gravel Top Side
+      Output retain 64 minecraft:gravel To Gravel2Flint Bottom Side
+   forget
+
+   Input minecraft:flint From Gravel2Flint Top Side
+      Output retain 64 minecraft:flint To Flint2Gunpowder Bottom Side
+   forget
+
+   Input minecraft:gunpowder From Flint2Gunpowder Top Side
+      Output retain 64 minecraft:gunpowder To Gunpowder2Sulfur Bottom Side
+   forget
+
+   Input alltheores:sulfur From Gunpowder2Sulfur Top Side
+      Output retain 64 alltheores:sulfur To Sulfur2SO2 Bottom Side
+   forget
+
+   Input gas:mekanism:sulfur_dioxide From Sulfur2SO2 Top Side
+      Output gas:mekanism:sulfur_dioxide To SO22SO3 Left Side
+   forget
+
+   Input gas:mekanism:sulfur_trioxide From SO22SO3 Top Side
+      Output gas:mekanism:sulfur_trioxide To SO32H2SO4 Left Side
+   forget
+
+   Input gas:mekanism:water_vapor From H2O2H2Og Top Side 
+      Output gas:mekanism:water_vapor To SO32H2SO4 Right Side
+   forget
+
+   Input gas:mekanism:sulfuric_acid From SO32H2SO4 Top Side
+      Output gas:mekanism:sulfuric_acid To Dissolution_Chamber Bottom Side
+   forget
+
+   Input gas:alltheores:dirty_* or gas:allthemodium:dirty_* or gas:kubejs:dirty_* From Dissolution_Chamber Top Side
+      Output gas:alltheores:dirty_* or gas:allthemodium:dirty_* or gas:kubejs:dirty_* To Washer Bottom Side
+   forget
+
+   Input gas:alltheores:clean_* or gas:allthemodium:clean_* or gas:kubejs:clean_* From Washer Top Side
+      Output gas:alltheores:clean_* or gas:allthemodium:clean_* or gas:kubejs:clean_* To Crystallizer Bottom Side
+   forget
+
+   Input alltheores:*_crystal or allthemodium:*_crystal or kubejs:*_crystal From Crystallizer Top Side
+      Output alltheores:*_crystal or allthemodium:*_crystal or kubejs:*_crystal To Injection_Chamber Bottom Side
+   forget
+
+   Input alltheores:*_shard or allthemodium:*_shard or kubejs:*_shard From Injection_Chamber Top Side
+      Output alltheores:*_shard or allthemodium:*_shard or kubejs:*_shard To Purifying Bottom Side
+   forget
+
+   Input alltheores:*_clump or allthemodium:*_clump or kubejs:*_clump From Purifying Top Side
+      Output alltheores:*_clump or allthemodium:*_clump or kubejs:*_clump To Crush2Dirty Bottom Side
+   forget
+
+   Input "alltheores:dirty_.*_dust" or "allthemodium:dirty_.*_dust" or "kubejs:dirty_.*_dust" From Crush2Dirty Top Side
+      Output "alltheores:dirty_.*_dust" or "allthemodium:dirty_.*_dust" or "kubejs:dirty_.*_dust" To Enricher Bottom Side
+   forget
+
+   Input alltheores:*_dust or allthemodium:*_dust or kubejs:*_dust From Enricher Top Side
+      Output alltheores:*_dust or allthemodium:*_dust or kubejs:*_dust To Storage
+   forget
+End
