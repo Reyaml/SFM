@@ -1,9 +1,0 @@
-Name "Resources_Farm_With_Botany_Pot"
-
---漏式植物盆自动收集
-Every 5 Seconds do
-
-    Input From Botany_Pot Bottom Side Slots 3-14
-        Output To Storage Top Side
-
-End
